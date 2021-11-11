@@ -1,8 +1,4 @@
 {
-  "name": "weather-journal-app",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
   "dependencies": {
     "amazing": "^0.1.4",
     "body-parser": "^1.19.0",
@@ -10,9 +6,21 @@
     "express": "^4.17.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
+  "name": "weather-journal-app",
+  "description": "web development-fwd project",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaryamMohamed/weather-journal-app.git"
+  },
   "author": "Maryam",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MaryamMohamed/weather-journal-app/issues"
+  },
+  "homepage": "https://github.com/MaryamMohamed/weather-journal-app#readme"
 }
