@@ -17,7 +17,7 @@ body{
 }
 
 .holder{
-
+    background: rgba(59, 74, 107, .4);
 }
 
 .entry{
@@ -25,26 +25,48 @@ body{
 }
 
 #entryHolder{
-
+    padding: 15px;
+    justify-content: center;
 }
 
 #date{
-
+    content: "Date : ";
+    margin-left: 5rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 1rem;
 }
 
 #temp{
-
+    content: "Temperature : ";
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 1rem;
 }
 
 #content{
-
+    content: "You're feeling ";
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 1rem;
+    flex: 2;
 }
 
 .headline {
-
+    display: grid;
+    grid-area: headline;
+    align-self: center;
+    justify-content: center;
 }
 .title{
-
+    display: inline-flex;
+    margin-top: 10px;
+    justify-content: center;
+    align-self: center;
+    width: 100%;
 }
 
 /*  Basic Styling To Override Default For Basic HTML Elements */

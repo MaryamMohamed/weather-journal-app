@@ -1,6 +1,8 @@
 /* Global Variables */
 const baseURL = 'http://api.openweathermap.org/data/2.5/weather?zip=';
-const apiKey = '1fa9860c71c3c66313269250521a9a41';
+const apiKey = '&appid=1fa9860c71c3c66313269250521a9a41';
+const fomeInput = document.getElementById('fomeInput');
+
 // Create a new date instance dynamically with JS
 let d = new Date();
 let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
@@ -8,12 +10,20 @@ let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
 document.getElementById('generate').addEventListener('click', performAction);
 
 function performAction(event){
-    //event.preventDefault();
+    event.preventDefault();
 
     const newZip =  document.getElementById('zip').value;
-    //const newBody = document.getElementById('feelings').value;
+    const newBody = document.getElementById('feelings').value;
 
     getWeather(baseURL,newZip, apiKey)
+    .then(function(data) {
+      postData('/add', { date: newDate, temp: data.main.temp, content: content });
+    })
+    .then(function() {
+      updateUI()
+    })
+    
+    fomeInput.reset();
 }
 
 // Pass the API Key variable as a parameter to fetch() . 
@@ -36,7 +46,7 @@ const postData = async ( url = '', data = {})=>{
       method: 'POST', 
       credentials: 'same-origin',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json;charset=UTF-8',
     },
 
     body: JSON.stringify({
@@ -55,4 +65,17 @@ const postData = async ( url = '', data = {})=>{
     }
 }
 
-//postData('/add', {answer:42});
+// Dynamic UI
+const updateUI = async () => {
+  const request = await fetch('/all');
+  try {
+    const allData = await request.json()
+
+    document.getElementById('date').innerHTML = allData.date;
+    document.getElementById('temp').innerHTML = allData.temp;
+    document.getElementById('content').innerHTML = allData.content;
+  }
+  catch (error) {
+    console.log("error", error);
+  }
+};
