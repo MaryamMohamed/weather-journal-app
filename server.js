@@ -21,9 +21,23 @@ app.use(cors());
 // Initialize the main project folder
 app.use(express.static('website'));
 
+// Initialize post routes
+app.post('/add', addInfo);
+
+function addInfo(req, res) {
+  projectData['date'] = req.body.date;
+  projectData['temp'] = req.body.temp;
+  projectData['content'] = req.body.content;
+  res.send(projectData);
+}
+
+// Initialize get routes
+app.get('/all', (req, res)=>{
+    res.send(projectData)
+});
 
 // Setup Server
 const port = 3000;
 const server = app.listen(port, () => {
-    console.log(`server is listening on port: ${port}`);
+    console.log(`you now at port: ${port}`);
 });
