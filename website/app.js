@@ -1,6 +1,6 @@
 /* Global Variables */
 const baseURL = 'http://api.openweathermap.org/data/2.5/weather?zip=';
-const apiKey = '&appid=1fa9860c71c3c66313269250521a9a41';
+const apiKey = '&appid=1fa9860c71c3c66313269250521a9a41&units=imperial';
 const fomeInput = document.getElementById('fomeInput');
 
 // Create a new date instance dynamically with JS
@@ -17,7 +17,7 @@ function performAction(event){
 
     getWeather(baseURL,newZip, apiKey)
     .then(function(data) {
-      postData('/add', { date: newDate, temp: data.main.temp, content: content });
+      postData('/add', { date: newDate, temp: data.main.temp, content: newBody });
     })
     .then(function() {
       updateUI()
